@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- SEO & Primary Meta Tags -->
+  <title>Subin & Sajitha — Wedding Invitation | 22 November 2026</title>
+  <meta name="title" content="Subin & Sajitha — Wedding Invitation | 22 November 2026">
+  <meta name="description" content="We cordially invite you with family and friends to celebrate the wedding of Subin & Sajitha on Sunday, 22 November 2026 at Sree Badra Auditorium, Thrissur and Mangalya Auditorium, Kannambra.">
+  <meta name="keywords" content="Subin Sajitha Wedding, Kerala Wedding, Wedding Invitation, Mannuthi Thrissur, Mangalya Auditorium Kannambra">
+  <meta name="author" content="Subin & Sajitha">
+  <meta name="theme-color" content="#b88e2b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Subin & Sajitha Wedding">
+
+  <!-- WhatsApp & Social Open Graph Metadata -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="./">
+  <meta property="og:title" content="Subin & Sajitha — Digital Wedding Invitation 💍">
+  <meta property="og:description" content="Sunday, 22 November 2026 • Together with our parents, we invite you to celebrate our wedding ceremony at Thrissur and reception at Kannambra. Tap to view the invitation!">
+  <meta property="og:image" content="./assets/og-preview.jpg">
+  <meta property="og:image:secure_url" content="./assets/og-preview.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Wedding of Subin & Sajitha">
+  <meta property="og:site_name" content="Subin & Sajitha Wedding">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Subin & Sajitha — Wedding Invitation | 22 November 2026">
+  <meta name="twitter:description" content="Cordially inviting your esteemed presence on the auspicious wedding of Subin & Sajitha.">
+  <meta name="twitter:image" content="./assets/og-preview.jpg">
+
+  <!-- Favicon / Touch Icon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%22%20100%22%20100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="safe-top safe-bottom">
+
+  <!-- Audio Player (Hidden with Floating Controls) -->
+  <audio id="bg-audio" loop preload="auto">
+    <source src="assets/audio/romantic-instrumental.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Flower Petals & Confetti Pop Canvas -->
+  <canvas id="petals-canvas"></canvas>
+
+  <!-- =======================================================================
+       1. OPENING COVER / ELEGANT SPLASH SCREEN
+       ======================================================================= -->
+  <div id="opening-cover" class="opening-cover" role="dialog" aria-modal="true" aria-label="Wedding Invitation Envelope">
+    <div class="opening-bg-particles"></div>
+    <div class="envelope-card">
+      <div class="opening-arch-ornament">
+        <span class="monogram-seal">S&S</span>
+      </div>
+      <p class="opening-tagline">You Are Cordially Invited</p>
+      <h1 class="opening-names gold-shine-text">Subin & Sajitha</h1>
+      <p class="opening-date">Sunday, 22 November 2026</p>
+
+      <button id="btn-open-invite" class="opening-btn" type="button" aria-label="Open wedding invitation">
+        <span>✨ Tap to Open Invitation ✨</span>
+      </button>
+
+      <div class="opening-hint">
+        <span>🎵 Romantic instrumental music will play</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       FLOATING TOP NAVIGATION & AUDIO CONTROLLER
+       ======================================================================= -->
+  <header class="floating-top-bar">
+    <div class="brand-pill">
+      <span class="brand-pill-monogram">S&S</span>
+      <span class="brand-pill-date">22.11.2026</span>
+    </div>
+
+    <div class="top-actions">
+      <!-- Language Switcher (EN / ML) -->
+      <button id="lang-toggle" class="btn-icon-glass lang-switch" type="button" title="Switch Language">
+        EN
+      </button>
+
+      <!-- Music Play / Pause Toggle -->
+      <button id="music-toggle" class="btn-icon-glass music-toggle" type="button" title="Toggle Background Music">
+        <span class="music-icon">🎵</span>
+        <div class="music-equalizer">
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+        </div>
+      </button>
+    </div>
+  </header>
+
+  <!-- =======================================================================
+       MAIN MOBILE-FIRST APP CONTAINER
+       ======================================================================= -->
+  <div class="app-container">
+
+    <!-- =====================================================================
+         2. HERO SECTION
+         ===================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-floral"></div>
+
+      <!-- Traditional Auspicious Invocation -->
+      <div class="ganesha-invoc reveal-fade-up">
+        <svg class="ganesha-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+        </svg>
+        <span>|| ശ്രീ ഗണേശായ നമഃ ||</span>
+      </div>
+
+      <!-- Monogram Medallion -->
+      <div class="monogram-circle reveal-fade-up delay-1">
+        <span class="monogram-text">S&S</span>
+      </div>
+
+      <p class="hero-pretitle reveal-fade-up delay-1">Together with their families</p>
+
+      <!-- Couple's Names with Premium Golden Shine Effect -->
+      <div class="couple-hero-title reveal-fade-up delay-2">
+        <span class="groom-name gold-shine-text">Subin</span>
+        <span class="names-connector">&</span>
+        <span class="bride-name gold-shine-text">Sajitha</span>
+      </div>
+
+      <p class="hero-subtitle reveal-fade-up delay-2">Cordially invite you to celebrate their union</p>
+
+      <!-- Elegant Kerala Traditional Arch Couple Preview -->
+      <div class="hero-couple-preview reveal-fade-up delay-3">
+        <img src="assets/couple-arch.jpg" alt="Subin & Sajitha" class="hero-couple-img" width="170" height="225">
+      </div>
+
+      <!-- Highlight Date & Location Badge -->
+      <div class="hero-date-highlight reveal-fade-up delay-3">
+        <span>✨ Sunday, 22 November 2026 • Kerala</span>
+      </div>
+
+      <!-- Elegant Smooth Scroll Down Indicator -->
+      <a href="#message" class="scroll-indicator" aria-label="Scroll down to invitation details">
+        <span class="scroll-text">Scroll to Begin</span>
+        <div class="scroll-chevron-wrap">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </a>
+    </section>
+
+    <!-- =====================================================================
+         3. EMOTIONAL WELCOMING MESSAGE SECTION
+         ===================================================================== -->
+    <section class="section-padding message-section" id="message">
+      <div class="section-header reveal-fade-up">
+        <span class="section-pretitle">A Message From Our Hearts</span>
+        <h2 class="section-title">With Love & Gratitude</h2>
+        <div class="gold-divider">
+          <span class="gold-divider-icon">❦</span>
+        </div>
+      </div>
+
+      <div class="wedding-card message-card reveal-fade-up delay-1">
+        <div class="quote-ornament">“</div>
+
+        <!-- English Message Body -->
+        <p class="message-body-en">
+          Two journeys intertwining into one lifelong path of friendship, laughter, and sacred devotion. 
+          As we take our vows and embark on this blessed voyage, our joy is truly complete only with your presence, 
+          prayers, and loving blessings. We warmly invite you and your family to join us on our auspicious wedding day.
+        </p>
+
+        <!-- Malayalam Message Body (Bilingual Switchable) -->
+        <div class="message-body-ml">
+          <p>
+            ഞങ്ങളുടെ പ്രിയപുത്രൻ <strong>സുബിൻ</strong>, <strong>സജിത</strong>യെ വിവാഹിതനാവുന്ന ഈ ശുഭവേളയിൽ 
+            താങ്കളുടെയും കുടുംബത്തിന്റെയും മഹനീയ സാന്നിധ്യവും അനുഗ്രഹവും സ്നേഹപൂർവ്വം സാദരം ക്ഷണിച്ചുകൊള്ളുന്നു.
+          </p>
+        </div>
+
+        <!-- Parents & Family Honor Presentation -->
+        <div class="family-details-grid">
+          <!-- Groom's Family -->
+          <div class="family-box">
+            <div class="family-box-icon">🌿</div>
+            <div class="family-box-content">
+              <h4>Groom's Parents</h4>
+              <p class="family-parents-name">Mr. Sudhevan & Mrs. Ambika Sudhevan</p>
+              <p class="family-address">Kunnampully House, Karappetta, Kannambra (P.O), Palakkad</p>
+              <a href="tel:9020875035" class="family-phone">📞 Ph: +91 90208 75035</a>
+            </div>
+          </div>
+
+          <!-- Bride's Family -->
+          <div class="family-box">
+            <div class="family-box-icon">🌸</div>
+            <div class="family-box-content">
+              <h4>Bride's Parents</h4>
+              <p class="family-parents-name">Mr. Sathanandhan & Mrs. Shiji Sathanandhan</p>
+              <p class="family-address">Thattil House, Mullakkara, Mannuthi (P.O), Thrissur</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gold-divider">
+          <span class="gold-divider-icon">✨</span>
+        </div>
+        <p style="font-family: var(--font-serif); font-size: 0.95rem; font-style: italic; color: var(--gold-700);">
+          With best compliments from Friends & Relatives
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         4. INTERACTIVE DATE REVEAL (SCRATCH-TO-REVEAL + FLOWER PETALS POP)
+         ===================================================================== -->
+    <section class="section-padding scratch-section" id="date-reveal">
+      <div class="section-header reveal-fade-up">
+        <span class="section-pretitle">Interactive Experience</span>
+        <h2 class="section-title">Scratch to Reveal</h2>
+        <p class="section-subtitle">Use your finger or cursor to scratch off the golden foil</p>
+        <div class="gold-divider">
+          <span class="gold-divider-icon">❦</span>
+        </div>
+      </div>
+
+      <div class="scratch-container reveal-fade-up delay-1">
+        <!-- Hidden Card (Revealed Date) -->
+        <div class="scratch-reveal-content">
+          <span class="revealed-pill">🌺 The Auspicious Day</span>
+          <div class="revealed-day">Sunday</div>
+          <div class="revealed-date-num gold-shine-text">22</div>
+          <div class="revealed-month-year">November 2026</div>
+          <p class="revealed-nakshatra">1202 വൃശ്ചികം 6 (Vrischikam 6) • Muhurtham 10:00 AM</p>
+        </div>
+
+        <!-- Golden Foil Scratch Canvas Overlay -->
+        <canvas id="scratch-canvas" class="scratch-canvas" width="360" height="240"></canvas>
+      </div>
+
+      <div class="scratch-hint-bar reveal-fade-up delay-2">
+        <span>👆 Scratch gently across the gold foil above</span>
+      </div>
+
+      <div class="scratch-actions reveal-fade-up delay-2">
+        <button id="btn-reset-scratch" class="btn-soft" type="button">
+          <span>🔄 Scratch Again</span>
+        </button>
+        <button id="btn-burst-petals" class="btn-soft" type="button">
+          <span>🌸 Shower Blessings</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         5. COUNTDOWN TIMER SECTION
+         ===================================================================== -->
+    <section class="section-padding countdown-section" id="countdown">
+      <div class="section-header reveal-fade-up">
+        <span class="section-pretitle">The Celebration Awaits</span>
+        <h2 class="section-title">Counting Down</h2>
+        <p class="section-subtitle">Until we begin our forever together</p>
+        <div class="gold-divider">
+          <span class="gold-divider-icon">❦</span>
+        </div>
+      </div>
+
+      <!-- Live Counter Grid -->
+      <div class="countdown-grid reveal-fade-up delay-1">
+        <div class="time-box">
+          <span class="time-val" id="timer-days">00</span>
+          <span class="time-lbl">Days</span>
+        </div>
+        <div class="time-box">
+          <span class="time-val" id="timer-hours">00</span>
+          <span class="time-lbl">Hours</span>
+        </div>
+        <div class="time-box">
+          <span class="time-val" id="timer-mins">00</span>
+          <span class="time-lbl">Minutes</span>
+        </div>
+        <div class="time-box">
+          <span class="time-val" id="timer-secs">00</span>
+          <span class="time-lbl">Seconds</span>
+        </div>
+      </div>
+
+      <p class="countdown-target-note reveal-fade-up delay-2">
+        Sunday, 22 November 2026 at 10:00 AM IST
+      </p>
+
+      <!-- Calendar Sync Actions -->
+      <div class="cal-button-wrap reveal-fade-up delay-2">
+        <button id="btn-google-cal" class="btn-gold-action" type="button">
+          <span>📅 Add to Google Calendar</span>
+        </button>
+        <button id="btn-ics-cal" class="btn-soft" type="button">
+          <span>🍏 Apple / Outlook iCal</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         6. COUPLE GALLERY SECTION (pic_1.jpg to pic_5.jpg)
+         ===================================================================== -->
+    <section class="section-padding gallery-section" id="gallery">
+      <div class="section-header reveal-fade-up">
+        <span class="section-pretitle">Cherished Moments</span>
+        <h2 class="section-title">The Couple & Invitations</h2>
+        <p class="section-subtitle">A glimpse into our celebration and blessings</p>
+        <div class="gold-divider">
+          <span class="gold-divider-icon">❦</span>
+        </div>
+      </div>
+
+      <!-- View Layout Selector Tabs -->
+      <div class="gallery-layout-toggle reveal-fade-up delay-1">
+        <button id="tab-carousel" class="tab-btn active" type="button">Swipe Cards</button>
+        <button id="tab-grid" class="tab-btn" type="button">Grid View</button>
+      </div>
+
+      <!-- Touch-Friendly Swipe Carousel View -->
+      <div id="view-carousel" class="gallery-carousel-wrap reveal-fade-up delay-1">
+        <div class="gallery-track" id="gallery-track">
+          <!-- Card 1: pic_4.jpg -->
+          <div class="gallery-card" data-index="0">
+            <div class="gallery-card-img-wrap">
+              <img src="assets/pic_4.jpg" alt="Subin & Sajitha Traditional Ceremony Portrait" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-card-caption">
+              <div>
+                <h4 class="caption-title">Traditional Attire</h4>
+                <p style="font-size: 0.78rem; color: var(--text-muted);">Nilavilakku & Auspicious Decor</p>
+              </div>
+              <span class="caption-tag">Portrait</span>
+            </div>
+          </div>
+
+          <!-- Card 2: pic_5.jpg -->
+          <div class="gallery-card" data-index="1">
+            <div class="gallery-card-img-wrap">
+              <img src="assets/pic_5.jpg" alt="Subin & Sajitha Candid Smiles on Veranda" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-card-caption">
+              <div>
+                <h4 class="caption-title">Cherished Smiles</h4>
+                <p style="font-size: 0.78rem; color: var(--text-muted);">Ancestral Veranda Steps</p>
+              </div>
+              <span class="caption-tag">Candid</span>
+            </div>
+          </div>
+
+          <!-- Card 3: pic_3.jpg -->
+          <div class="gallery-card" data-index="2">
+            <div class="gallery-card-img-wrap">
+              <img src="assets/pic_3.jpg" alt="Save The Date Calendar Invitation Card" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-card-caption">
+              <div>
+                <h4 class="caption-title">Mark Your Calendar</h4>
+                <p style="font-size: 0.78rem; color: var(--text-muted);">Save the Date Card</p>
+              </div>
+              <span class="caption-tag">Calendar</span>
+            </div>
+          </div>
+
+          <!-- Card 4: pic_1.jpg -->
+          <div class="gallery-card" data-index="3">
+            <div class="gallery-card-img-wrap">
+              <img src="assets/pic_1.jpg" alt="Official Wedding Invitation Card English" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-card-caption">
+              <div>
+                <h4 class="caption-title">Invitation (English)</h4>
+                <p style="font-size: 0.78rem; color: var(--text-muted);">Official Wedding Card</p>
+              </div>
+              <span class="caption-tag">Invitation</span>
+            </div>
+          </div>
+
+          <!-- Card 5: pic_2.jpg -->
+          <div class="gallery-card" data-index="4">
+            <div class="gallery-card-img-wrap">
+              <img src="assets/pic_2.jpg" alt="Official Wedding Invitation Card Malayalam" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-card-caption">
+              <div>
+                <h4 class="caption-title">ക്ഷണക്കത്ത് (മലയാളം)</h4>
+                <p style="font-size: 0.78rem; color: var(--text-muted);">പരമ്പരാഗത വിവാഹ ക്ഷണക്കത്ത്</p>
+              </div>
+              <span class="caption-tag">Invitation</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dots Pagination -->
+        <div class="gallery-dots">
+          <span class="gallery-dot active" data-index="0"></span>
+          <span class="gallery-dot" data-index="1"></span>
+          <span class="gallery-dot" data-index="2"></span>
+          <span class="gallery-dot" data-index="3"></span>
+          <span class="gallery-dot" data-index="4"></span>
+        </div>
+      </div>
+
+      <!-- Grid View Alternative -->
+      <div id="view-grid" class="gallery-grid-view">
+        <div class="grid-item" data-index="0">
+          <img src="assets/pic_4.jpg" alt="Traditional Ceremony Portrait" loading="lazy">
+        </div>
+        <div class="grid-item" data-index="1">
+          <img src="assets/pic_5.jpg" alt="Candid Smiles" loading="lazy">
+        </div>
+        <div class="grid-item" data-index="2">
+          <img src="assets/pic_3.jpg" alt="Calendar Invitation Card" loading="lazy">
+        </div>
+        <div class="grid-item" data-index="3">
+          <img src="assets/pic_1.jpg" alt="English Wedding Invitation" loading="lazy">
+        </div>
+        <div class="grid-item" data-index="4">
+          <img src="assets/pic_2.jpg" alt="Malayalam Wedding Invitation" loading="lazy">
+        </div>
+      </div>
+
+      <p style="text-align: center; font-size: 0.78rem; color: var(--text-light); margin-top: 14px;">
+        💡 Tap any photo to view full-screen
+      </p>
+    </section>
+
+    <!-- =====================================================================
+         7. EVENT DETAILS SECTION (MUHURTHAM & RECEPTION)
+         ===================================================================== -->
+    <section class="section-padding events-section" id="events">
+      <div class="section-header reveal-fade-up">
+        <span class="section-pretitle">The Sacred Celebrations</span>
+        <h2 class="section-title">Event Schedule</h2>
+        <p class="section-subtitle">Please join us for our wedding rituals and reception</p>
+        <div class="gold-divider">
+          <span class="gold-divider-icon">❦</span>
+        </div>
+      </div>
+
+      <div class="events-container">
+        <!-- Event 1: The Wedding (Muhurtham) -->
+        <div class="event-card reveal-fade-up delay-1">
+          <div class="event-card-header">
+            <div class="event-icon-badge">💍</div>
+            <div class="event-titles">
+              <h3>The Wedding</h3>
+              <p class="event-malayalam-title">ശുഭമുഹൂർത്തം (Muhurtham)</p>
+            </div>
+          </div>
+
+          <div class="event-meta-list">
+            <div class="event-meta-item">
+              <span class="meta-icon">📅</span>
+              <div>
+                <p class="meta-content-title">Date</p>
+                <p class="meta-content-val">Sunday, 22 November 2026</p>
+                <p class="meta-note">1202 Vrischikam 6 (1202 വൃശ്ചികം 6)</p>
+              </div>
+            </div>
+
+            <div class="event-meta-item">
+              <span class="meta-icon">⏰</span>
+              <div>
+                <p class="meta-content-title">Time</p>
+                <p class="meta-content-val">10:00 AM – 11:00 AM</p>
+                <p class="meta-note">Marriage party will start at 9:00 AM</p>
+              </div>
+            </div>
+
+            <div class="event-meta-item">
+              <span class="meta-icon">📍</span>
+              <div>
+                <p class="meta-content-title">Venue</p>
+                <p class="meta-content-val">Sree Badra Auditorium</p>
+                <p class="meta-note">Mannuthi, Thrissur, Kerala</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://www.google.com/maps/search/?api=1&query=Sree+Badra+Auditorium+Mannuthy+Thrissur" 
+             target="_blank" rel="noopener noreferrer" class="btn-open-map">
+            <span>🗺️ Open Map: Sree Badra</span>
+          </a>
+        </div>
+
+        <!-- Event 2: The Reception -->
+        <div class="event-card reveal-fade-up delay-2">
+          <div class="event-card-header">
+            <div class="event-icon-badge">🥂</div>
+            <div class="event-titles">
+              <h3>The Reception</h3>
+              <p class="event-malayalam-title">വിവാഹ സൽക്കാരം (Reception)</p>
+            </div>
+          </div>
+
+          <div class="event-meta-list">
+            <div class="event-meta-item">
+              <span class="meta-icon">📅</span>
+              <div>
+                <p class="meta-content-title">Date</p>
+                <p class="meta-content-val">Sunday, 22 November 2026</p>
+                <p class="meta-note">Evening Celebration</p>
+              </div>
+            </div>
+
+            <div class="event-meta-item">
+              <span class="meta-icon">⏰</span>
+              <div>
+                <p class="meta-content-title">Time</p>
+                <p class="meta-content-val">4:00 PM – 7:00 PM</p>
+                <p class="meta-note">Feast & Compliments with family & friends</p>
+              </div>
+            </div>
+
+            <div class="event-meta-item">
+              <span class="meta-icon">📍</span>
+              <div>
+                <p class="meta-content-title">Venue</p>
+                <p class="meta-content-val">Mangalya Auditorium</p>
+                <p class="meta-note">Kannambra, Palakkad, Kerala</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://www.google.com/maps/search/?api=1&query=Mangalya+Auditorium+Kannambra" 
+             target="_blank" rel="noopener noreferrer" class="btn-open-map">
+            <span>🗺️ Open Map: Mangalya</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         8. VENUE LOCATION & NAVIGATION SECTION
+         ===================================================================== -->
+    <section class="section-padding venues-section" id="venues">
+      <div class="section-header reveal-fade-up">
+        <span class="section-pretitle">Getting There</span>
+        <h2 class="section-title">Location & Navigation</h2>
+        <p class="section-subtitle">One-tap navigation to guide you directly to our venues</p>
+        <div class="gold-divider">
+          <span class="gold-divider-icon">❦</span>
+        </div>
+      </div>
+
+      <!-- Venue 1 Card -->
+      <div class="venue-card reveal-fade-up delay-1">
+        <div class="venue-visual-thumb">
+          <div class="venue-map-pattern"></div>
+          <div class="venue-pin-badge">
+            <span style="font-size: 1.8rem;">📍</span>
+            <span>WEDDING VENUE</span>
+          </div>
+        </div>
+        <h3 class="venue-name">Sree Badra Auditorium</h3>
+        <p class="venue-address">
+          Mannuthi, Thrissur, Kerala<br>
+          <span style="font-size: 0.8rem; color: var(--gold-600);">Between: 10:00 AM to 11:00 AM</span>
+        </p>
+        <div class="venue-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Sree+Badra+Auditorium+Mannuthy+Thrissur" 
+             target="_blank" rel="noopener noreferrer" class="btn-open-map">
+            <span>🗺️ Open Google Maps</span>
+          </a>
+          <button class="btn-copy-address" type="button" data-address="Sree Badra Auditorium, Mannuthi, Thrissur, Kerala">
+            <span>📋 Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Venue 2 Card -->
+      <div class="venue-card reveal-fade-up delay-2">
+        <div class="venue-visual-thumb">
+          <div class="venue-map-pattern"></div>
+          <div class="venue-pin-badge">
+            <span style="font-size: 1.8rem;">🎉</span>
+            <span>RECEPTION VENUE</span>
+          </div>
+        </div>
+        <h3 class="venue-name">Mangalya Auditorium</h3>
+        <p class="venue-address">
+          Kannambra, Palakkad District, Kerala<br>
+          <span style="font-size: 0.8rem; color: var(--gold-600);">Between: 4:00 PM to 7:00 PM</span>
+        </p>
+        <div class="venue-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Mangalya+Auditorium+Kannambra" 
+             target="_blank" rel="noopener noreferrer" class="btn-open-map">
+            <span>🗺️ Open Google Maps</span>
+          </a>
+          <button class="btn-copy-address" type="button" data-address="Mangalya Auditorium, Kannambra, Palakkad, Kerala">
+            <span>📋 Copy</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         9. WHATSAPP SHARING & RSVP SECTION
+         ===================================================================== -->
+    <section class="section-padding share-section" id="share">
+      <div class="section-header reveal-fade-up">
+        <span class="section-pretitle">Celebrate With Us</span>
+        <h2 class="section-title">Share & RSVP</h2>
+        <div class="gold-divider">
+          <span class="gold-divider-icon">❦</span>
+        </div>
+      </div>
+
+      <div class="share-card reveal-fade-up delay-1">
+        <div class="whatsapp-icon-round">💬</div>
+        <h3 class="share-card-title">Share on WhatsApp</h3>
+        <p class="share-card-desc">
+          Share this digital invitation card with your loved ones and friends with a beautiful preview card!
+        </p>
+
+        <button id="btn-share-whatsapp" class="btn-whatsapp-share" type="button">
+          <span>📲 Forward on WhatsApp</span>
+        </button>
+
+        <!-- Interactive RSVP Form to Family Contact -->
+        <div class="rsvp-box">
+          <h4>Confirm Your Presence (RSVP)</h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted); text-align: center;">
+            Kindly let us know if you'll be joining our celebration
+          </p>
+
+          <div style="margin-top: 14px;">
+            <input type="text" id="rsvp-name" class="rsvp-input-text" placeholder="Your Name / Family Name">
+            <select id="rsvp-guests" class="rsvp-input-text" style="cursor: pointer;">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4+">4+ Family Members</option>
+            </select>
+          </div>
+
+          <div class="rsvp-options">
+            <label class="rsvp-label">
+              <input type="radio" name="rsvp-attendance" value="Attending Both Wedding & Reception" checked>
+              <span>Joyfully Attending Both Functions</span>
+            </label>
+            <label class="rsvp-label">
+              <input type="radio" name="rsvp-attendance" value="Attending Wedding Muhurtham (Mannuthi)">
+              <span>Attending Wedding at Mannuthi</span>
+            </label>
+            <label class="rsvp-label">
+              <input type="radio" name="rsvp-attendance" value="Attending Reception (Kannambra)">
+              <span>Attending Reception at Kannambra</span>
+            </label>
+          </div>
+
+          <button id="btn-send-rsvp" class="btn-gold-action" type="button" style="width: 100%;">
+            <span>💌 Send RSVP via WhatsApp</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         10. CONTACT US SECTION
+         ===================================================================== -->
+    <section class="section-padding contact-section" id="contact">
+      <div class="section-header reveal-fade-up">
+        <span class="section-pretitle">For Any Assistance</span>
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-subtitle">Feel free to call or WhatsApp us for directions, timings & queries</p>
+        <div class="gold-divider">
+          <span class="gold-divider-icon">❦</span>
+        </div>
+      </div>
+
+      <div class="contact-cards-wrap reveal-fade-up delay-1">
+        <!-- Contact Card: Abin -->
+        <div class="contact-card">
+          <div class="contact-header-row">
+            <div class="contact-avatar-icon">
+              <span>🤵</span>
+            </div>
+            <div class="contact-info">
+              <h3 class="contact-name">Abin</h3>
+              <p class="contact-role">Event Coordination</p>
+              <a href="tel:+918136880260" class="contact-phone-display" title="Call Abin">
+                <span>📞</span> +91 81368 80260
+              </a>
+            </div>
+          </div>
+          <div class="contact-actions">
+            <a href="tel:+918136880260" class="btn-contact-action btn-contact-call" aria-label="Call Abin">
+              <span>📞 Call</span>
+            </a>
+            <a href="https://wa.me/918136880260?text=Hi%20Abin,%20reaching%20out%20regarding%20Subin%20%26%20Sajitha's%20wedding!" 
+               target="_blank" rel="noopener noreferrer" class="btn-contact-action btn-contact-wa" aria-label="Message Abin on WhatsApp">
+              <span>💬 WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Card: Adith -->
+        <div class="contact-card">
+          <div class="contact-header-row">
+            <div class="contact-avatar-icon">
+              <span>🤵</span>
+            </div>
+            <div class="contact-info">
+              <h3 class="contact-name">Adith</h3>
+              <p class="contact-role">Event Coordination</p>
+              <a href="tel:+919946235903" class="contact-phone-display" title="Call Adith">
+                <span>📞</span> +91 99462 35903
+              </a>
+            </div>
+          </div>
+          <div class="contact-actions">
+            <a href="tel:+919946235903" class="btn-contact-action btn-contact-call" aria-label="Call Adith">
+              <span>📞 Call</span>
+            </a>
+            <a href="https://wa.me/919946235903?text=Hi%20Adith,%20reaching%20out%20regarding%20Subin%20%26%20Sajitha's%20wedding!" 
+               target="_blank" rel="noopener noreferrer" class="btn-contact-action btn-contact-wa" aria-label="Message Adith on WhatsApp">
+              <span>💬 WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         11. FOOTER
+         ===================================================================== -->
+    <footer class="footer-section">
+      <div class="footer-monogram">S&S</div>
+      <h3 class="footer-names gold-shine-text">Subin & Sajitha</h3>
+      <p class="footer-blessing">
+        “Two lives, two hearts, joined together in friendship, united forever in love.”
+      </p>
+      <div class="gold-divider" style="opacity: 0.4;">
+        <span class="gold-divider-icon">❦</span>
+      </div>
+      <p class="footer-credits">
+        22 November 2026 • Thrissur & Palakkad, Kerala<br>
+        Heartily Inviting You With Family
+      </p>
+    </footer>
+
+  </div><!-- /.app-container -->
+
+  <!-- =======================================================================
+       STICKY BOTTOM APP BAR (MOBILE-OPTIMIZED QUICK BAR)
+       ======================================================================= -->
+  <nav class="mobile-bottom-bar" aria-label="Quick Navigation">
+    <a href="#hero" class="bottom-bar-item" aria-label="Home">
+      <span class="bottom-bar-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="#date-reveal" class="bottom-bar-item highlight" aria-label="Scratch Date">
+      <span class="bottom-bar-icon">✨</span>
+      <span>Scratch</span>
+    </a>
+    <a href="#gallery" class="bottom-bar-item" aria-label="Couple Gallery">
+      <span class="bottom-bar-icon">📷</span>
+      <span>Gallery</span>
+    </a>
+    <a href="#events" class="bottom-bar-item" aria-label="Event Times">
+      <span class="bottom-bar-icon">⏰</span>
+      <span>Events</span>
+    </a>
+    <a href="#venues" class="bottom-bar-item" aria-label="Venue Maps">
+      <span class="bottom-bar-icon">📍</span>
+      <span>Maps</span>
+    </a>
+    <a href="#share" class="bottom-bar-item" aria-label="RSVP and Share">
+      <span class="bottom-bar-icon">💌</span>
+      <span>RSVP</span>
+    </a>
+  </nav>
+
+  <!-- =======================================================================
+       FULLSCREEN LIGHTBOX MODAL
+       ======================================================================= -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Gallery Image Viewer">
+    <div class="lightbox-header">
+      <span id="lightbox-title" class="lightbox-title">Subin & Sajitha</span>
+      <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Close photo viewer">✕</button>
+    </div>
+
+    <div class="lightbox-content">
+      <button id="lightbox-prev" class="lightbox-nav-btn lightbox-prev" type="button" aria-label="Previous image">‹</button>
+      <img id="lightbox-img" class="lightbox-img" src="assets/pic_4.jpg" alt="Subin & Sajitha wedding photo">
+      <button id="lightbox-next" class="lightbox-nav-btn lightbox-next" type="button" aria-label="Next image">›</button>
+    </div>
+
+    <div class="lightbox-footer">
+      <span id="lightbox-counter">1 / 5</span>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast-msg" class="toast-msg" role="status" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/petals.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

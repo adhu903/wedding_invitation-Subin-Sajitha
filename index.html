@@ -321,139 +321,35 @@
     </section>
 
     <!-- =====================================================================
-         6. COUPLE GALLERY SECTION (pic_1.jpg to pic_5.jpg)
+         6. COUPLE PHOTO GALLERY
          ===================================================================== -->
     <section class="section-padding gallery-section" id="gallery">
       <div class="section-header reveal-fade-up">
         <span class="section-pretitle">Cherished Moments</span>
-        <h2 class="section-title">The Couple & Invitations</h2>
+        <h2 class="section-title">Our Memories</h2>
         <p class="section-subtitle">A glimpse into our celebration and blessings</p>
-        <div class="gold-divider">
-          <span class="gold-divider-icon">❦</span>
+        <div class="gold-divider"><span class="gold-divider-icon">❦</span></div>
+      </div>
+
+      <div id="gallery-home" class="gallery-home">
+        <div id="gallery-categories" class="gallery-categories" role="tablist" aria-label="Photo albums">
+          <button class="gallery-category active" type="button" role="tab" aria-selected="true" data-album="engagement">Engagement</button>
+          <button class="gallery-category" type="button" role="tab" aria-selected="false" data-album="pre-wedding">Pre-Wedding</button>
+          <button class="gallery-category" type="button" role="tab" aria-selected="false" data-album="save-the-date">Save the Date</button>
+        </div>
+        <div class="gallery-carousel-wrap">
+          <div class="gallery-track" id="gallery-track" aria-label="Swipe through photos"></div>
+          <div class="gallery-dots" id="gallery-dots" aria-label="Photo position"></div>
         </div>
       </div>
 
-      <!-- View Layout Selector Tabs -->
-      <div class="gallery-layout-toggle reveal-fade-up delay-1">
-        <button id="tab-carousel" class="tab-btn active" type="button">Swipe Cards</button>
-        <button id="tab-grid" class="tab-btn" type="button">Grid View</button>
+      <div id="gallery-album" class="gallery-album" hidden>
+        <button id="gallery-back" class="gallery-back" type="button"><span aria-hidden="true">←</span> All albums</button>
+        <div class="gallery-album-heading"><h3 id="album-title">Engagement</h3><p id="album-description"></p></div>
+        <div id="album-grid" class="photo-grid" aria-label="Album photos"></div>
       </div>
 
-      <!-- Touch-Friendly Swipe Carousel View -->
-      <div id="view-carousel" class="gallery-carousel-wrap reveal-fade-up delay-1">
-        <div class="gallery-track" id="gallery-track">
-          <!-- Card 1: pic_4.jpg -->
-          <div class="gallery-card" data-index="0">
-            <div class="gallery-card-img-wrap">
-              <img src="assets/pic_4.jpg" alt="Subin & Sajitha Traditional Ceremony Portrait" class="gallery-img"
-                loading="lazy">
-            </div>
-            <div class="gallery-card-caption">
-              <div>
-                <h4 class="caption-title">Together is Our Favourite Place</h4>
-                <p style="font-size: 0.78rem; color: var(--text-muted);">Beginning our beautiful journey as husband and
-                  wife.</p>
-              </div>
-              <span class="caption-tag">Portrait</span>
-            </div>
-          </div>
-
-          <!-- Card 2: pic_5.jpg -->
-          <div class="gallery-card" data-index="1">
-            <div class="gallery-card-img-wrap">
-              <img src="assets/pic_5.jpg" alt="Subin & Sajitha Candid Smiles on Veranda" class="gallery-img"
-                loading="lazy">
-            </div>
-            <div class="gallery-card-caption">
-              <div>
-                <h4 class="caption-title">Stiched in Love & Tradition</h4>
-                <p style="font-size: 0.78rem; color: var(--text-muted);">Our forever starts today, surrounded by your
-                  blessings.</p>
-              </div>
-              <span class="caption-tag">Portrait</span>
-            </div>
-          </div>
-
-          <!-- Card 3: pic_3.jpg -->
-          <div class="gallery-card" data-index="2">
-            <div class="gallery-card-img-wrap">
-              <img src="assets/pic_3.jpg" alt="Save The Date Calendar Invitation Card" class="gallery-img"
-                loading="lazy">
-            </div>
-            <div class="gallery-card-caption">
-              <div>
-                <h4 class="caption-title">With Heart Full of Joy</h4>
-                <p style="font-size: 0.78rem; color: var(--text-muted);">We are thrilled to celebrate our union with
-                  those we cherish most</p>
-              </div>
-              <span class="caption-tag">Portrait</span>
-            </div>
-          </div>
-
-          <!-- Card 4: pic_1.jpg -->
-          <div class="gallery-card" data-index="3">
-            <div class="gallery-card-img-wrap">
-              <img src="assets/pic_1.jpg" alt="Official Wedding Invitation Card English" class="gallery-img"
-                loading="lazy">
-            </div>
-            <div class="gallery-card-caption">
-              <div>
-                <h4 class="caption-title">Two Soul, One Beautiful Promise</h4>
-                <p style="font-size: 0.78rem; color: var(--text-muted);">We made it official!</p>
-              </div>
-              <span class="caption-tag">Portrait</span>
-            </div>
-          </div>
-
-          <!-- Card 5: pic_2.jpg -->
-          <div class="gallery-card" data-index="4">
-            <div class="gallery-card-img-wrap">
-              <img src="assets/pic_2.jpg" alt="Official Wedding Invitation Card Malayalam" class="gallery-img"
-                loading="lazy">
-            </div>
-            <div class="gallery-card-caption">
-              <div>
-                <h4 class="caption-title">Be Our Guest</h4>
-                <p style="font-size: 0.78rem; color: var(--text-muted);">Your presense is our biggest blessing. Welcome!
-                </p>
-              </div>
-              <span class="caption-tag">Portrait</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dots Pagination -->
-        <div class="gallery-dots">
-          <span class="gallery-dot active" data-index="0"></span>
-          <span class="gallery-dot" data-index="1"></span>
-          <span class="gallery-dot" data-index="2"></span>
-          <span class="gallery-dot" data-index="3"></span>
-          <span class="gallery-dot" data-index="4"></span>
-        </div>
-      </div>
-
-      <!-- Grid View Alternative -->
-      <div id="view-grid" class="gallery-grid-view">
-        <div class="grid-item" data-index="0">
-          <img src="assets/pic_4.jpg" alt="Traditional Ceremony Portrait" loading="lazy">
-        </div>
-        <div class="grid-item" data-index="1">
-          <img src="assets/pic_5.jpg" alt="Candid Smiles" loading="lazy">
-        </div>
-        <div class="grid-item" data-index="2">
-          <img src="assets/pic_3.jpg" alt="Calendar Invitation Card" loading="lazy">
-        </div>
-        <div class="grid-item" data-index="3">
-          <img src="assets/pic_1.jpg" alt="English Wedding Invitation" loading="lazy">
-        </div>
-        <div class="grid-item" data-index="4">
-          <img src="assets/pic_2.jpg" alt="Malayalam Wedding Invitation" loading="lazy">
-        </div>
-      </div>
-
-      <p style="text-align: center; font-size: 0.78rem; color: var(--text-light); margin-top: 14px;">
-        💡 Tap any photo to view full-screen
-      </p>
+      <p class="gallery-hint">Choose an album · Swipe photos · Tap any photo to enlarge</p>
     </section>
 
     <!-- =====================================================================
@@ -577,7 +473,7 @@
       <!-- Venue 1 Card -->
       <div class="venue-card reveal-fade-up delay-1">
         <div class="venue-visual-thumb">
-          <img src="/assets/sree-badra-aud.jpg" alt="Sree Badra Auditorium" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="assets/sree-badra-aud.jpg" alt="Sree Badra Auditorium" style="width: 100%; height: 100%; object-fit: cover;">
         
           <div class="venue-pin-badge">
             <span style="font-size: 1.8rem;"></span>
@@ -603,7 +499,7 @@
       <!-- Venue 2 Card -->
       <div class="venue-card reveal-fade-up delay-2">
         <div class="venue-visual-thumb">
-          <img src="/assets/mangalya-aud.jpg" alt="Mangalya Auditorium" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+          <img src="assets/mangalya-aud.jpg" alt="Mangalya Auditorium" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
          
           <div class="venue-pin-badge">
             <span style="font-size: 1.8rem;"></span>
@@ -807,25 +703,21 @@
     </a>
   </nav>
 
-  <!-- =======================================================================
-       FULLSCREEN LIGHTBOX MODAL
-       ======================================================================= -->
-  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Gallery Image Viewer">
+  <!-- Fullscreen photo viewer -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Photo viewer">
     <div class="lightbox-header">
-      <span id="lightbox-title" class="lightbox-title">Subin & Sajitha</span>
+      <div>
+        <span id="lightbox-title" class="lightbox-title"></span>
+        <p id="lightbox-description" class="lightbox-description"></p>
+      </div>
       <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Close photo viewer">✕</button>
     </div>
-
     <div class="lightbox-content">
-      <button id="lightbox-prev" class="lightbox-nav-btn lightbox-prev" type="button"
-        aria-label="Previous image">‹</button>
-      <img id="lightbox-img" class="lightbox-img" src="assets/pic_4.jpg" alt="Subin & Sajitha wedding photo">
-      <button id="lightbox-next" class="lightbox-nav-btn lightbox-next" type="button" aria-label="Next image">›</button>
+      <button id="lightbox-prev" class="lightbox-nav-btn lightbox-prev" type="button" aria-label="Previous photo">‹</button>
+      <img id="lightbox-img" class="lightbox-img" src="" alt="">
+      <button id="lightbox-next" class="lightbox-nav-btn lightbox-next" type="button" aria-label="Next photo">›</button>
     </div>
-
-    <div class="lightbox-footer">
-      <span id="lightbox-counter">1 / 5</span>
-    </div>
+    <div class="lightbox-footer"><span id="lightbox-counter"></span></div>
   </div>
 
   <!-- Toast Notification -->
@@ -837,3 +729,5 @@
 </body>
 
 </html>
+
+

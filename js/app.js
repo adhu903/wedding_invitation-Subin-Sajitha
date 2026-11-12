@@ -1,6 +1,6 @@
 /**
  * Subin & Sajitha — Wedding Invitation
- * Core Application Logic: Scratch Reveal, Audio, Countdown, Gallery, Lightbox, RSVP
+ * Core Application Logic: Scratch Reveal, Audio, Countdown, Gallery, RSVP
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -317,165 +317,252 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
 
   // --------------------------------------------------------------------------
-  // 5. COUPLE GALLERY & FULLSCREEN LIGHTBOX
+  // 5. COUPLE PHOTO ALBUMS & SWIPE CAROUSEL
   // --------------------------------------------------------------------------
+  const albums = {
+    engagement: {
+      title: 'Engagement',
+      description: 'A promise made with love, family, and blessings.',
+      photos: [
+        ['assets/gallery/engagement/engagement_01.jpg', 'A Portrait to Remember', 'A quiet portrait from our celebration.'],
+        ['assets/gallery/engagement/engagement_02.jpg', 'Our Happy Beginning', 'A treasured moment from our engagement memories.'],
+        ['assets/gallery/engagement/engagement_03.jpg', 'Together in Tradition', 'Sharing a special day with the people we love.'],
+        ['assets/gallery/engagement/engagement_04.jpg', 'A Moment of Joy', 'A little glimpse of our celebration.'],
+        ['assets/pic_4.jpg', 'Side by Side', 'A candid moment together at the ceremony.'],
+        ['assets/pic_5.jpg', 'A Day to Remember', 'Celebrating this beautiful beginning together.']
+      ]
+    },
+    'pre-wedding': {
+      title: 'Pre-Wedding',
+      description: 'Sweet moments before forever.',
+      photos: [
+        ['assets/gallery/pre-wedding/prewedding_01.jpg', 'A Portrait Together', 'A favourite moment before the wedding.'],
+        ['assets/gallery/pre-wedding/prewedding_02.jpg', 'A Happy Beginning', 'A treasured moment before forever.'],
+        ['assets/gallery/pre-wedding/prewedding_03.jpg', 'Together in Tradition', 'A little glimpse of our journey.'],
+        ['assets/gallery/pre-wedding/prewedding_04.jpg', 'A Moment of Joy', 'Smiles we will always remember.'],
+        ['assets/gallery/pre-wedding/prewedding_05.jpg', 'Before Forever', 'A soft, golden moment together.'],
+        ['assets/gallery/pre-wedding/prewedding_06.jpg', 'Always Us', 'A memory to keep close.']
+      ]
+    },
+    'save-the-date': {
+      title: 'Save the Date',
+      description: 'A few memories from the day we chose.',
+      photos: [
+        ['assets/gallery/save-the-date/save_date_01.jpg', 'The Day We Chose', 'A memory from our Save the Date collection.'],
+        ['assets/gallery/save-the-date/save_date_02.jpg', 'Close to You', 'A memory from our Save the Date collection.'],
+        ['assets/gallery/save-the-date/save_date_03.jpg', 'Our Favourite Promise', 'A memory from our Save the Date collection.'],
+        ['assets/gallery/save-the-date/save_date_04.jpg', 'A Little Closer', 'A memory from our Save the Date collection.'],
+        ['assets/gallery/save-the-date/save_date_05.jpg', 'Just the Two of Us', 'A memory from our Save the Date collection.'],
+        ['assets/gallery/save-the-date/save_date_06.jpg', 'A Moment to Keep', 'A memory from our Save the Date collection.'],
+        ['assets/gallery/save-the-date/save_date_07.jpg', 'Our Story', 'A memory from our Save the Date collection.'],
+        ['assets/gallery/save-the-date/save_date_08.jpg', 'Forever Starts Here', 'A memory from our Save the Date collection.'],
+        ['assets/gallery/save-the-date/save_date_09.jpg', 'With Love', 'A memory from our Save the Date collection.']
+      ]
+    }
+  };
+
+  const categoryButtons = document.querySelectorAll('.gallery-category');
+  const galleryHome = document.getElementById('gallery-home');
+  const galleryAlbum = document.getElementById('gallery-album');
+  const albumGrid = document.getElementById('album-grid');
+  const albumTitle = document.getElementById('album-title');
+  const albumDescription = document.getElementById('album-description');
+  const galleryBack = document.getElementById('gallery-back');
   const galleryTrack = document.getElementById('gallery-track');
-  const galleryDots = document.querySelectorAll('.gallery-dot');
-  const galleryCards = document.querySelectorAll('.gallery-card');
+  const galleryDots = document.getElementById('gallery-dots');
+  let activeAlbumKey = 'engagement';
+  let activeAlbum = albums[activeAlbumKey];
+  let activePhotoIndex = Math.min(2, activeAlbum.photos.length - 1);
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxDescription = document.getElementById('lightbox-description');
   const lightboxCounter = document.getElementById('lightbox-counter');
   const lightboxClose = document.getElementById('lightbox-close');
   const lightboxPrev = document.getElementById('lightbox-prev');
   const lightboxNext = document.getElementById('lightbox-next');
-
-  const galleryData = [
-    {
-      src: 'assets/pic_4.jpg',
-      title: 'Subin & Sajitha — Traditional Vows',
-      desc: 'Traditional portrait with holy Nilavilakku and flower decor'
-    },
-    {
-      src: 'assets/pic_5.jpg',
-      title: 'Cherished Laughter & Moments',
-      desc: 'Candid smiles on the ancestral veranda steps'
-    },
-    {
-      src: 'assets/pic_3.jpg',
-      title: 'Mark Your Calendar — Save The Date',
-      desc: 'Sunday, 22 November 2026 calendar invitation'
-    },
-    {
-      src: 'assets/pic_1.jpg',
-      title: 'Wedding Invitation Card (English)',
-      desc: 'Solemnized at Sree Badra & Mangalya Auditorium'
-    },
-    {
-      src: 'assets/pic_2.jpg',
-      title: 'Wedding Invitation Card (Malayalam)',
-      desc: 'വിവാഹ ക്ഷണക്കത്ത് — സ്നേഹപൂർവ്വം ക്ഷണിക്കുന്നു'
-    }
-  ];
-
   let currentGalleryIndex = 0;
 
-  // Sync scroll position with dots
-  if (galleryTrack && galleryDots.length > 0) {
-    galleryTrack.addEventListener('scroll', () => {
-      const scrollPos = galleryTrack.scrollLeft;
-      const cardWidth = galleryTrack.querySelector('.gallery-card')?.offsetWidth || 300;
-      const activeIdx = Math.round(scrollPos / (cardWidth + 16));
-      galleryDots.forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === activeIdx);
-      });
-    });
-
-    galleryDots.forEach((dot, idx) => {
-      dot.addEventListener('click', () => {
-        const cardWidth = galleryTrack.querySelector('.gallery-card')?.offsetWidth || 300;
-        galleryTrack.scrollTo({
-          left: idx * (cardWidth + 16),
-          behavior: 'smooth'
-        });
-      });
-    });
+  function updateLightbox() {
+    const [src, title, description] = activeAlbum.photos[currentGalleryIndex];
+    lightboxImg.src = src;
+    lightboxImg.alt = title;
+    lightboxTitle.textContent = title;
+    lightboxDescription.textContent = description;
+    lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${activeAlbum.photos.length}`;
   }
 
-  // Open Lightbox
   function openLightbox(index) {
     currentGalleryIndex = index;
     updateLightbox();
-    if (lightboxModal) {
-      lightboxModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-  }
-
-  function updateLightbox() {
-    const item = galleryData[currentGalleryIndex];
-    if (!item) return;
-    if (lightboxImg) lightboxImg.src = item.src;
-    if (lightboxTitle) lightboxTitle.textContent = item.title;
-    if (lightboxCounter) {
-      lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${galleryData.length}`;
-    }
+    lightboxModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    lightboxClose.focus();
   }
 
   function closeLightbox() {
-    if (lightboxModal) {
-      lightboxModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
+    lightboxModal.classList.remove('active');
+    document.body.style.overflow = '';
   }
 
-  function nextLightbox() {
-    currentGalleryIndex = (currentGalleryIndex + 1) % galleryData.length;
+  function changeLightboxPhoto(direction) {
+    currentGalleryIndex = (currentGalleryIndex + direction + activeAlbum.photos.length) % activeAlbum.photos.length;
     updateLightbox();
   }
 
-  function prevLightbox() {
-    currentGalleryIndex = (currentGalleryIndex - 1 + galleryData.length) % galleryData.length;
-    updateLightbox();
+  function updateDots() {
+    const cards = [...galleryTrack.querySelectorAll('.gallery-photo-card')];
+    if (!cards.length) return;
+    const center = galleryTrack.getBoundingClientRect().left + galleryTrack.clientWidth / 2;
+    const activeIndex = cards.reduce((closest, card, index) => {
+      const distance = Math.abs(card.getBoundingClientRect().left + card.offsetWidth / 2 - center);
+      return distance < closest.distance ? { index, distance } : closest;
+    }, { index: 0, distance: Infinity }).index;
+    activePhotoIndex = activeIndex;
+    galleryDots.querySelectorAll('.gallery-dot').forEach((dot, index) => dot.classList.toggle('active', index === activeIndex));
   }
 
-  galleryCards.forEach((card, idx) => {
-    card.addEventListener('click', () => openLightbox(idx));
-  });
-
-  const gridItems = document.querySelectorAll('.grid-item');
-  gridItems.forEach((item, idx) => {
-    item.addEventListener('click', () => openLightbox(idx));
-  });
-
-  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-  if (lightboxNext) lightboxNext.addEventListener('click', nextLightbox);
-  if (lightboxPrev) lightboxPrev.addEventListener('click', prevLightbox);
-
-  // Keyboard navigation
-  window.addEventListener('keydown', e => {
-    if (!lightboxModal || !lightboxModal.classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') nextLightbox();
-    if (e.key === 'ArrowLeft') prevLightbox();
-  });
-
-  // Touch Swipe inside Lightbox
-  let touchStartX = 0;
-  if (lightboxModal) {
-    lightboxModal.addEventListener('touchstart', e => {
-      touchStartX = e.touches[0].clientX;
-    }, { passive: true });
-
-    lightboxModal.addEventListener('touchend', e => {
-      const touchEndX = e.changedTouches[0].clientX;
-      const diff = touchEndX - touchStartX;
-      if (diff > 45) prevLightbox();
-      if (diff < -45) nextLightbox();
-    }, { passive: true });
+  function centerActivePhoto() {
+    if (galleryHome.hidden) return;
+    const cards = galleryTrack.querySelectorAll('.gallery-photo-card');
+    const card = cards[Math.min(activePhotoIndex, cards.length - 1)];
+    if (!card) return;
+    const cardCenter = card.getBoundingClientRect().left + card.offsetWidth / 2;
+    const trackCenter = galleryTrack.getBoundingClientRect().left + galleryTrack.clientWidth / 2;
+    galleryTrack.scrollTo({ left: galleryTrack.scrollLeft + cardCenter - trackCenter, behavior: 'auto' });
+    updateDots();
   }
 
-  // Layout switcher (Carousel vs Grid)
-  const tabCarousel = document.getElementById('tab-carousel');
-  const tabGrid = document.getElementById('tab-grid');
-  const viewCarousel = document.getElementById('view-carousel');
-  const viewGrid = document.getElementById('view-grid');
+  function renderCarousel() {
+    activeAlbum = albums[activeAlbumKey];
+    activePhotoIndex = Math.min(activePhotoIndex, activeAlbum.photos.length - 1);
+    galleryTrack.replaceChildren(...activeAlbum.photos.map(([src, title], index) => {
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'gallery-photo-card';
+      card.setAttribute('aria-label', `${activeAlbum.title}: ${title}. Select to open album.`);
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = title;
+      img.loading = index < 2 ? 'eager' : 'lazy';
+      const caption = document.createElement('span');
+      caption.className = 'gallery-photo-caption';
+      const category = document.createElement('span');
+      category.className = 'gallery-photo-category';
+      if (activeAlbumKey === 'engagement') {
+        category.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 9.5c-4.8 0-8.7 3.7-8.7 8.2S11.2 27 16 27s8.7-4.8 8.7-9.3S20.8 9.5 16 9.5Z"/><path d="M13.4 8.5h5.2M16 8.5V5m-3 0h6m-3 22v2"/></svg>';
+      } else if (activeAlbumKey === 'pre-wedding') {
+        category.textContent = '❦';
+      } else {
+        category.textContent = '✦';
+      }
+      const label = document.createElement('span');
+      label.textContent = activeAlbum.title;
+      const note = document.createElement('small');
+      note.textContent = title;
+      const expandHint = document.createElement('span');
+      expandHint.className = 'gallery-photo-expand';
+      expandHint.textContent = 'Tap to enlarge  ⤢';
+      caption.append(category, label, note, expandHint);
+      card.append(img, caption);
+      card.addEventListener('click', () => openLightbox(index));
+      return card;
+    }));
+    galleryDots.replaceChildren(...activeAlbum.photos.map((_, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = `gallery-dot${index === 0 ? ' active' : ''}`;
+      dot.setAttribute('aria-label', `Photo ${index + 1}`);
+      dot.addEventListener('click', () => {
+        const card = galleryTrack.querySelectorAll('.gallery-photo-card')[index];
+        if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      });
+      return dot;
+    }));
+    requestAnimationFrame(centerActivePhoto);
+  }
 
-  if (tabCarousel && tabGrid && viewCarousel && viewGrid) {
-    tabCarousel.addEventListener('click', () => {
-      tabCarousel.classList.add('active');
-      tabGrid.classList.remove('active');
-      viewCarousel.style.display = 'block';
-      viewGrid.classList.remove('active');
+  function selectCategory(key) {
+    if (!albums[key]) return;
+    activeAlbumKey = key;
+    categoryButtons.forEach(button => {
+      const selected = button.dataset.album === key;
+      button.classList.toggle('active', selected);
+      button.setAttribute('aria-selected', String(selected));
     });
-
-    tabGrid.addEventListener('click', () => {
-      tabGrid.classList.add('active');
-      tabCarousel.classList.remove('active');
-      viewCarousel.style.display = 'none';
-      viewGrid.classList.add('active');
-    });
+    renderCarousel();
+    openAlbum();
   }
+
+  function openAlbum() {
+    albumTitle.textContent = activeAlbum.title;
+    albumDescription.textContent = activeAlbum.description;
+    albumGrid.replaceChildren(...activeAlbum.photos.map(([src, title, description], index) => {
+      const figure = document.createElement('figure');
+      figure.className = 'photo-grid-item';
+      figure.tabIndex = 0;
+      figure.setAttribute('role', 'button');
+      figure.setAttribute('aria-label', `View ${title} full screen`);
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = title;
+      img.loading = 'lazy';
+      const caption = document.createElement('figcaption');
+      caption.className = 'photo-grid-caption';
+      const heading = document.createElement('strong');
+      heading.textContent = title;
+      const note = document.createElement('small');
+      note.textContent = description;
+      caption.append(heading, note);
+      figure.append(img, caption);
+      figure.addEventListener('click', () => openLightbox(index));
+      figure.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openLightbox(index);
+        }
+      });
+      return figure;
+    }));
+    galleryHome.hidden = true;
+    galleryAlbum.hidden = false;
+    galleryBack.focus();
+  }
+
+  categoryButtons.forEach(button => button.addEventListener('click', () => selectCategory(button.dataset.album)));
+  galleryTrack.addEventListener('scroll', updateDots, { passive: true });
+  if (galleryBack) galleryBack.addEventListener('click', () => {
+    galleryAlbum.hidden = true;
+    galleryHome.hidden = false;
+    requestAnimationFrame(centerActivePhoto);
+    document.querySelector(`.gallery-category[data-album="${activeAlbumKey}"]`)?.focus();
+  });
+  let galleryResizeFrame = 0;
+  window.addEventListener('resize', () => {
+    const preserveIndex = activePhotoIndex;
+    cancelAnimationFrame(galleryResizeFrame);
+    galleryResizeFrame = requestAnimationFrame(() => {
+      activePhotoIndex = preserveIndex;
+      centerActivePhoto();
+    });
+  }, { passive: true });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', () => changeLightboxPhoto(-1));
+  lightboxNext.addEventListener('click', () => changeLightboxPhoto(1));
+  window.addEventListener('keydown', event => {
+    if (!lightboxModal.classList.contains('active')) return;
+    if (event.key === 'Escape') closeLightbox();
+    if (event.key === 'ArrowLeft') changeLightboxPhoto(-1);
+    if (event.key === 'ArrowRight') changeLightboxPhoto(1);
+  });
+  let lightboxTouchStartX = 0;
+  lightboxModal.addEventListener('touchstart', event => { lightboxTouchStartX = event.touches[0].clientX; }, { passive: true });
+  lightboxModal.addEventListener('touchend', event => {
+    const distance = event.changedTouches[0].clientX - lightboxTouchStartX;
+    if (distance > 45) changeLightboxPhoto(-1);
+    if (distance < -45) changeLightboxPhoto(1);
+  }, { passive: true });
+  renderCarousel();
 
   // --------------------------------------------------------------------------
   // 6. BILINGUAL LANGUAGE SWITCHER (EN / ML)
@@ -661,3 +748,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2800);
   }
 });
+
+

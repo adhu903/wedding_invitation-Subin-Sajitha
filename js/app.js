@@ -352,7 +352,23 @@ document.addEventListener('DOMContentLoaded', () => {
   albums.all = {
     title: 'All',
     description: 'Engagement and Save the Date memories, together.',
-    photos: [...albums.engagement.photos, ...albums['save-the-date'].photos]
+    photos: [
+      albums.engagement.photos[0],
+      albums['save-the-date'].photos[0],
+      albums.engagement.photos[3],
+      albums['save-the-date'].photos[6],
+      albums.engagement.photos[1],
+      albums['save-the-date'].photos[2],
+      albums.engagement.photos[5],
+      albums['save-the-date'].photos[8],
+      albums.engagement.photos[2],
+      albums['save-the-date'].photos[4],
+      albums['save-the-date'].photos[1],
+      albums.engagement.photos[4],
+      albums['save-the-date'].photos[7],
+      albums['save-the-date'].photos[3],
+      albums['save-the-date'].photos[5]
+    ]
   };
 
   const categoryButtons = document.querySelectorAll('.gallery-category');
@@ -452,7 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       const label = document.createElement('span');
       label.textContent = activeAlbumKey === 'all'
-        ? (index < albums.engagement.photos.length ? albums.engagement.title : albums['save-the-date'].title)
+        ? (src.startsWith('assets/gallery/engagement/') ? albums.engagement.title : albums['save-the-date'].title)
         : activeAlbum.title;
       const note = document.createElement('small');
       note.textContent = title;

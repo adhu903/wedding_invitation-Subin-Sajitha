@@ -332,18 +332,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ['assets/pic_5.jpg', 'A Day to Remember', 'Celebrating this beautiful beginning together.']
       ]
     },
-    'pre-wedding': {
-      title: 'Pre-Wedding',
-      description: 'Sweet moments before forever.',
-      photos: [
-        ['assets/gallery/pre-wedding/prewedding_01.jpg', 'A Portrait Together', 'A favourite moment before the wedding.'],
-        ['assets/gallery/pre-wedding/prewedding_02.jpg', 'A Happy Beginning', 'A treasured moment before forever.'],
-        ['assets/gallery/pre-wedding/prewedding_03.jpg', 'Together in Tradition', 'A little glimpse of our journey.'],
-        ['assets/gallery/pre-wedding/prewedding_04.jpg', 'A Moment of Joy', 'Smiles we will always remember.'],
-        ['assets/gallery/pre-wedding/prewedding_05.jpg', 'Before Forever', 'A soft, golden moment together.'],
-        ['assets/gallery/pre-wedding/prewedding_06.jpg', 'Always Us', 'A memory to keep close.']
-      ]
-    },
     'save-the-date': {
       title: 'Save the Date',
       description: 'A few memories from the day we chose.',
@@ -361,6 +349,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  albums.all = {
+    title: 'All',
+    description: 'Engagement and Save the Date memories, together.',
+    photos: [...albums.engagement.photos, ...albums['save-the-date'].photos]
+  };
+
   const categoryButtons = document.querySelectorAll('.gallery-category');
   const galleryHome = document.getElementById('gallery-home');
   const galleryAlbum = document.getElementById('gallery-album');
@@ -370,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const galleryBack = document.getElementById('gallery-back');
   const galleryTrack = document.getElementById('gallery-track');
   const galleryDots = document.getElementById('gallery-dots');
-  let activeAlbumKey = 'engagement';
+  let activeAlbumKey = 'all';
   let activeAlbum = albums[activeAlbumKey];
   let activePhotoIndex = Math.min(2, activeAlbum.photos.length - 1);
   const lightboxModal = document.getElementById('lightbox-modal');
@@ -451,13 +445,15 @@ document.addEventListener('DOMContentLoaded', () => {
       category.className = 'gallery-photo-category';
       if (activeAlbumKey === 'engagement') {
         category.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 9.5c-4.8 0-8.7 3.7-8.7 8.2S11.2 27 16 27s8.7-4.8 8.7-9.3S20.8 9.5 16 9.5Z"/><path d="M13.4 8.5h5.2M16 8.5V5m-3 0h6m-3 22v2"/></svg>';
-      } else if (activeAlbumKey === 'pre-wedding') {
-        category.textContent = '❦';
+      } else if (activeAlbumKey === 'all') {
+        category.textContent = '♥';
       } else {
         category.textContent = '✦';
       }
       const label = document.createElement('span');
-      label.textContent = activeAlbum.title;
+      label.textContent = activeAlbumKey === 'all'
+        ? (index < albums.engagement.photos.length ? albums.engagement.title : albums['save-the-date'].title)
+        : activeAlbum.title;
       const note = document.createElement('small');
       note.textContent = title;
       const expandHint = document.createElement('span');

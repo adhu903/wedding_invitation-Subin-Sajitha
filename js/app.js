@@ -366,7 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const galleryDots = document.getElementById('gallery-dots');
   let activeAlbumKey = 'all';
   let activeAlbum = albums[activeAlbumKey];
-  let activePhotoIndex = Math.min(2, activeAlbum.photos.length - 1);
+  let activePhotoIndex =0;
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxTitle = document.getElementById('lightbox-title');
@@ -429,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderCarousel() {
     activeAlbum = albums[activeAlbumKey];
-    activePhotoIndex = Math.min(activePhotoIndex, activeAlbum.photos.length - 1);
+    activePhotoIndex = 0;
     galleryTrack.replaceChildren(...activeAlbum.photos.map(([src, title], index) => {
       const card = document.createElement('button');
       card.type = 'button';

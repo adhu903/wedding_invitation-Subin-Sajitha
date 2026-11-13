@@ -328,8 +328,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ['assets/gallery/engagement/engagement_02.jpg', 'Our Happy Beginning', 'A treasured moment from our engagement memories.'],
         ['assets/gallery/engagement/engagement_03.jpg', 'Together in Tradition', 'Sharing a special day with the people we love.'],
         ['assets/gallery/engagement/engagement_04.jpg', 'A Moment of Joy', 'A little glimpse of our celebration.'],
-        ['assets/pic_4.jpg', 'Side by Side', 'A candid moment together at the ceremony.'],
-        ['assets/pic_5.jpg', 'A Day to Remember', 'Celebrating this beautiful beginning together.']
+        ['assets/gallery/engagement/engagement_05.jpg', 'Side by Side', 'A candid moment together at the ceremony.'],
+        ['assets/gallery/engagement/engagement_06.jpg', 'A Day to Remember', 'Celebrating this beautiful beginning together.']
       ]
     },
     'save-the-date': {

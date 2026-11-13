@@ -586,7 +586,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentLang = currentLang === 'en' ? 'ml' : 'en';
     if (currentLang === 'ml') {
       document.body.classList.add('lang-active-ml');
-      if (langToggleBtn) langToggleBtn.textContent = 'മലയാളം';
+      if (langToggleBtn) langToggleBtn.textContent = 'മല';
       showToast('മലയാളത്തിലേക്ക് മാറ്റി 🌸');
     } else {
       document.body.classList.remove('lang-active-ml');
